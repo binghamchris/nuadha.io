@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: DNS setup for nuadha.io.
+
+Resources:
+  nuadhaZone:
+    Type: "AWS::Route53::HostedZone"
+    Properties: 
+      Name: nuadha.io.
+
+Outputs:
+  nuadhaNameServers:
+    Description: Nameservers which the nuadha.io. domain should utilise
+    Value: !Join [ ' ', !GetAtt nuadhaZone.NameServers]
